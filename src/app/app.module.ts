@@ -6,10 +6,10 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FuncionarioComponent } from './funcionario/funcionario.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NbThemeModule, NbLayoutModule, NbAccordionModule, NbInputModule, NbButtonModule, NbAlertModule, NbIconModule } from '@nebular/theme';
+import { NbThemeModule, NbLayoutModule, NbAccordionModule, NbInputModule, NbButtonModule, NbAlertModule, NbIconModule, NbDialogModule, NbCardModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import {FormsModule} from '@angular/forms';
-import { FuncionarioFormComponent } from './funcionario-form/funcionario-form.component'
+import { FuncionarioFormComponent } from './funcionario-form/funcionario-form.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +30,9 @@ import { FuncionarioFormComponent } from './funcionario-form/funcionario-form.co
     NbButtonModule,
     FormsModule,
     NbAlertModule,
-    NbIconModule
+    NbIconModule,
+    NbDialogModule.forRoot(),
+    NbCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

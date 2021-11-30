@@ -2,13 +2,24 @@
   {{errorMessage}}
 </nb-alert>
 
+<ng-template #dialog let-data let-ref="dialogRef">
+  <nb-card>
+    <nb-card-header>Template Dialog</nb-card-header>
+    <nb-card-body>{{ data }}</nb-card-body>
+    <nb-card-footer>
+      <button class="btns" nbButton (click)="deletar(item.id)" status="danger">Deletar</button>
+      <button class="btns" nbButton (click)="ref.close()">Cancelar</button>
+    </nb-card-footer>
+  </nb-card>
+</ng-template>
+
 <div class="collumn">
   <p>Nome:</p>
   <input nbInput type="text" id="name" name="name" [(ngModel)]="item.nome">
 </div>
 <div class="collumn">
   <p>Sobrenome:</p>
-  <input nbInput type="text" id="name" name="name" [(ngModel)]="item.sobrenome">
+  <input nbInput type="text" id="name" name="name" minlength="2" maxlength="50" [(ngModel)]="item.sobrenome">
 </div>
 <div class="collumn">
   <p>Email:</p>
@@ -23,5 +34,5 @@
   <button class="btns" (click)="save(item)" nbButton status="success">
     Salvar
   </button>
-  <button nbButton status="danger" (click)="delete(item.id)">Deletar</button>
+  <button nbButton status="danger" (click)="deleteDialog(dialog,item)">Deletar</button>
 </div>

@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, TemplateRef } from '@angular/core';
+import { NbDialogRef, NbDialogService } from '@nebular/theme';
 import { FuncionarioService } from '../funcionario.service';
 
 @Component({
@@ -14,8 +15,10 @@ export class FuncionarioFormComponent implements OnInit {
 
   error = false
   errorMessage = "";
+  dialog: NbDialogRef<any> | undefined;
 
-  constructor(private funcionarioService: FuncionarioService) { }
+
+  constructor(private funcionarioService: FuncionarioService, private dialogService: NbDialogService) { }
 
   ngOnInit(): void {
   }
@@ -29,7 +32,10 @@ export class FuncionarioFormComponent implements OnInit {
       });
   }
 
-  delete(id: number){
+  deletar(id: number){
+    if (this.dialog != undefined) {
+      this.dialog.close();
+    }
     this.funcionarioService.deleteFuncionario(id).subscribe(
       () => this.funcionarioSaved.emit({deleted: true}),
       error => {
@@ -40,5 +46,9 @@ export class FuncionarioFormComponent implements OnInit {
 
   closeError(){
     this.error = false;
+  }
+
+  deleteDialog(dialog: TemplateRef<any>, funcionario: any){
+    this.dialog = this.dialogService.open(dialog, { context: "Você tem certeza que deseja deletar o fucnionario " + funcionario.nome + " " + funcionario.sobrenome });
   }
 }

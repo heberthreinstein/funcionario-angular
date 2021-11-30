@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { NbDialogService } from '@nebular/theme';
 import { FuncionarioService } from '../funcionario.service';
 
 @Component({
@@ -42,5 +43,4 @@ export class FuncionarioComponent implements OnInit {
   closeSuccess(){
     this.success = false;
   }
-
 }

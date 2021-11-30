@@ -12,22 +12,33 @@ export class FuncionarioFormComponent implements OnInit {
 
   @Output() funcionarioSaved: EventEmitter<any> = new EventEmitter();
 
+  error = false
+  errorMessage = "";
+
   constructor(private funcionarioService: FuncionarioService) { }
 
   ngOnInit(): void {
   }
 
   save(funcionario: any){
-    this.funcionarioService.saveFuncionario(funcionario).subscribe((res) => {
-      console.log(res);
-      this.funcionarioSaved.emit(funcionario)
-    });
+    this.funcionarioService.saveFuncionario(funcionario).subscribe(
+      () => this.funcionarioSaved.emit(funcionario),
+      error => {
+        this.errorMessage = error.error.message
+        this.error = true
+      });
   }
 
   delete(id: number){
-    this.funcionarioService.deleteFuncionario(id).subscribe((res) => {
-      console.log(res);
-      this.funcionarioSaved.emit({deleted: true})
-    });
+    this.funcionarioService.deleteFuncionario(id).subscribe(
+      () => this.funcionarioSaved.emit({deleted: true}),
+      error => {
+        this.errorMessage = error.error.message
+        this.error = true
+      });
+  }
+
+  closeError(){
+    this.error = false;
   }
 }

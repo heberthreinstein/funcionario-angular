@@ -10,7 +10,7 @@ export class FuncionarioService {
   constructor(private http: HttpClient) { }
 
   getAllFuncionarios(): Observable<any>{
-    return this.http.get("http://localhost:8080/api/v1/funcionario");
+    return this.http.get("http://localhost:8080/api/v1/funcionario")
   }
 
   saveFuncionario(funcionario: any){

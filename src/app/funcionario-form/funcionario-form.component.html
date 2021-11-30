@@ -1,3 +1,7 @@
+<nb-alert *ngIf="error" status="danger" closable (close)="closeError()">
+  {{errorMessage}}
+</nb-alert>
+
 <div class="collumn">
   <p>Nome:</p>
   <input nbInput type="text" id="name" name="name" [(ngModel)]="item.nome">

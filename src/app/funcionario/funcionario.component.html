@@ -1,3 +1,7 @@
+<nb-alert *ngIf="success" status="success" closable (close)="closeSuccess()">
+  {{successMessage}}
+</nb-alert>
+
 <nb-accordion>
   <nb-accordion-item *ngFor="let item of funcionarios|async">
     <nb-accordion-item-header>{{item.nome}} {{item.sobrenome}}</nb-accordion-item-header>

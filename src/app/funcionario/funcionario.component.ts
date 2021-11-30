@@ -13,11 +13,15 @@ export class FuncionarioComponent implements OnInit {
   novosFuncionarios: any = []
   formControl = new FormControl('');
 
+  success = false;
+  successMessage = ""
+
+
   constructor(private funcionarioService: FuncionarioService) { }
 
 
   ngOnInit(): void {
-    this.funcionarios = this.funcionarioService.getAllFuncionarios();
+    this.funcionarios = this.funcionarioService.getAllFuncionarios()
   }
 
   novo(){
@@ -26,9 +30,17 @@ export class FuncionarioComponent implements OnInit {
 
   funcionarioSaved(funcionario: any){
     this.funcionarios = this.funcionarioService.getAllFuncionarios();
+    this.success = true
     if (!funcionario.deleted) {
+      this.successMessage = "Funcionario " + funcionario.nome +" salvo com sucesso!"
       this.novosFuncionarios = this.novosFuncionarios.filter((obj: any) => obj !== funcionario);
+    } else {
+      this.successMessage = "Funcionario deletado com sucesso!"
     }
+  }
+
+  closeSuccess(){
+    this.success = false;
   }
 
 }

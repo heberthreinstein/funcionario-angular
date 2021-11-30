@@ -1,0 +1,23 @@
+<div class="collumn">
+  <p>Nome:</p>
+  <input nbInput type="text" id="name" name="name" [(ngModel)]="item.nome">
+</div>
+<div class="collumn">
+  <p>Sobrenome:</p>
+  <input nbInput type="text" id="name" name="name" [(ngModel)]="item.sobrenome">
+</div>
+<div class="collumn">
+  <p>Email:</p>
+  <input nbInput type="text" id="name" name="name" [(ngModel)]="item.email">
+</div>
+<div class="collumn">
+  <p>PIS:</p>
+  <input nbInput type="text" id="name" name="name" [(ngModel)]="item.pis">
+</div>
+<div>
+  <p>Ações: </p>
+  <button class="btns" (click)="save(item)" nbButton status="success">
+    Salvar
+  </button>
+  <button nbButton status="danger" (click)="delete(item.id)">Deletar</button>
+</div>

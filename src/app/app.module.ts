@@ -6,13 +6,16 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FuncionarioComponent } from './funcionario/funcionario.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NbThemeModule, NbLayoutModule, NbAccordionModule, NbInputModule, NbButtonModule } from '@nebular/theme';
+import { NbThemeModule, NbLayoutModule, NbAccordionModule, NbInputModule, NbButtonModule, NbAlertModule, NbIconModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
+import {FormsModule} from '@angular/forms';
+import { FuncionarioFormComponent } from './funcionario-form/funcionario-form.component'
 
 @NgModule({
   declarations: [
     AppComponent,
-    FuncionarioComponent
+    FuncionarioComponent,
+    FuncionarioFormComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +27,10 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
     NbEvaIconsModule,
     NbAccordionModule,
     NbInputModule,
-    NbButtonModule
+    NbButtonModule,
+    FormsModule,
+    NbAlertModule,
+    NbIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

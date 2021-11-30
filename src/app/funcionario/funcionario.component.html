@@ -2,27 +2,19 @@
   <nb-accordion-item *ngFor="let item of funcionarios|async">
     <nb-accordion-item-header>{{item.nome}} {{item.sobrenome}}</nb-accordion-item-header>
     <nb-accordion-item-body>
-      <div class="collumn">
-        <p>Nome:</p>
-        <input nbInput type="text" id="name" name="name" value="{{item.nome}}">
+      <app-funcionario-form (funcionarioSaved)="funcionarioSaved($event)" [item]="item"></app-funcionario-form>
+    </nb-accordion-item-body>
+  </nb-accordion-item>
+  <nb-accordion-item *ngFor="let item of novosFuncionarios">
+    <nb-accordion-item-header>Novo Funcionario
+      <div class="warn">
+        <nb-icon icon="alert-triangle-outline" status="warning"></nb-icon> Funcionario não salvo
       </div>
-      <div class="collumn">
-        <p>Sobrenome:</p>
-        <input nbInput type="text" id="name" name="name" value="{{item.sobrenome}}">
-      </div>
-      <div class="collumn">
-        <p>Email:</p>
-        <input nbInput type="text" id="name" name="name" value="{{item.email}}">
-      </div>
-      <div class="collumn">
-        <p>PIS:</p>
-        <input nbInput type="text" id="name" name="name" value="{{item.pis}}">
-      </div>
-      <div>
-        <p>Ações: </p>
-        <button nbButton outline status="primary">Salvar</button>
-        <button nbButton outline status="danger">Deletar</button>
-      </div>
+    </nb-accordion-item-header>
+    <nb-accordion-item-body>
+      <app-funcionario-form (funcionarioSaved)="funcionarioSaved($event)" [item]="item"></app-funcionario-form>
     </nb-accordion-item-body>
   </nb-accordion-item>
 </nb-accordion>
+
+<button (click)="novo()" class="btns" nbButton status="primary">Novo Funcionario</button>
